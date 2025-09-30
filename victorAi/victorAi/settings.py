@@ -30,10 +30,11 @@ SECRET_KEY = os.getenv("SECRET_KEY", "hjdwqevbve87324327643ewnvewnbcd0909218732y
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '*']
+ALLOWED_HOSTS = ['localhost', 'ai-chatbot-backend-1-2zoe.onrender.com', '127.0.0.1']
 CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:3000",
-    "http://localhost:3000"
+    "http://localhost:3000",
+    "ai-chatbot-backend-1-2zoe.onrender.com"
 ]
 CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOW_ALL_ORIGINS = True
