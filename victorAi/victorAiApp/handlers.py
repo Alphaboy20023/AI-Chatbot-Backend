@@ -4,16 +4,21 @@ import re
 
 PROMPTS = {
     "what are you": "I am Victor's first Artificial Intelligence, V1",
-    "built": "Akinola Victor is the visionary behind VictorAi, launching its first version, V1, to assist and interact intelligently.",
+    "built you": "Akinola Victor is the visionary behind VictorAi, launching its first version, V1, to assist and interact intelligently.",
     "founder": "Do you want to know the founder of something?",
     "okay": "Glad to meet you too! See you soon 👋",
     "akinola victor": "Akinola Victor is the visionary behind VictorAi, launching its first version, V1, to assist and interact intelligently.",
     "story": "Sure, what story would you like?",
+    "stories": "Sure, what story would you like?",
     "joke": "I love jokes too! Do you want me to crack one for you? 😎😁",
     "jokes": "I love jokes too! Do you want me to crack one for you? 😎😁",
     "machine learning": "Machine learning is a branch of AI that allows systems to learn from data and improve over time without being explicitly programmed.",
     "wassup": "Hi, wassup? How can I help you today?",
+    "what is an ai chatbot": "An AI chatbot is a software program that uses artificial intelligence to simulate human conversation, understanding natural language to respond to user queries in a human-like way",
+    "is url":"A URL (Uniform Resource Locator) is a web address that serves as a unique identifier and a global address for a specific resource, document, or page on the internet",
+    "a url":"A URL (Uniform Resource Locator) is a web address that serves as a unique identifier and a global address for a specific resource, document, or page on the internet",
     "default": "I'm still learning, but I got your message.",
+    
 }
 
 GREETINGS = {
@@ -34,6 +39,9 @@ GREETINGS = {
         "Good Morning! Hope your day goes great!"
     ],
     "how are you": [
+        "I'm just code, but I'm doing great 😄"
+    ],
+    "hi chatbot": [
         "I'm just code, but I'm doing great 😄"
     ]
 }
@@ -112,7 +120,7 @@ class MathHandler:
             if key != "default" and re.search(rf"\b{re.escape(key)}\b", text.lower()):
                 responses.append(reply)
 
-        responses.append(f"The result is {result}.")
+        responses.append(f"The result of {expr} is {result}.")
         return " ".join(responses)
 
 
@@ -123,7 +131,7 @@ class ResponseHandler:
         text_lower = text.lower()
 
         # if math-like content
-        if any(ch.isdigit() for ch in text_lower) or any(op in text_lower for op in ["+", "-", "*", "x", "/", "plus", "minus", "times", "divide"]):
+        if any(ch.isdigit() for ch in text_lower) or any(op in text_lower for op in ["+", "-", "*", "x", "/", "plus", "minus", "times", "divide", 'divided by']):
             math_resp = MathHandler.process(text)
             if math_resp:
                 return math_resp
